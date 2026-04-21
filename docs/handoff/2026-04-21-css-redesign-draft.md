@@ -73,6 +73,7 @@ author: 지훈
 2. 본안 결정 후 `/codex review` 실행 → 치명 이슈만 반영
 3. (필요 시) 모바일 nav 추가 튜닝 pass
 4. 본안 확정 후 append-only 4블록을 단일 "brand redesign" 블록으로 통합·정리 (CSS 위생 작업)
+5. **Cloudflare 캐시 정책 정식 정리** — 현재 `/assets/*`에 `Cache-Control: public, max-age=31536000, immutable` 헤더가 붙어 있어, CSS 파일 내용만 바꾸는 iteration 방식에서 edge/브라우저가 revalidate하지 않음. 시안 단계에선 `index.html`의 CSS 링크에 `?v=20260421c` 식 쿼리 버전을 증가시키는 방식으로 우회 중. 본안 단계에서 Cloudflare Page Rule로 `immutable` 제거 또는 TTL 단축, 혹은 Vite 재빌드 기반 파일명 해시 convention 복원 중 택일.
 
 # 다음 세션이 피해야 할 함정
 
